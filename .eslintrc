@@ -1,0 +1,35 @@
+{
+  "parser": "@babel/eslint-parser",
+  "env": {
+    "browser": true,
+    "es6": true,
+    "mocha": true
+  },
+  "plugins": ["react", "prettier", "standard"],
+  "extends": [
+    "standard",
+    "plugin:react/recommended",
+    "prettier",
+    "prettier/react",
+    "prettier/standard"
+  ],
+  "rules": {
+    "prettier/prettier": "error",
+    "react/require-default-props": "off", // airbnb use error
+    "react/forbid-prop-types": "off", // airbnb use error
+    "react/display-name": "off",
+    "no-debugger": "off"
+  },
+  "settings": {
+    "react": {
+      "version": "17.0.1"
+    }
+  },
+  "globals": {
+    "jest": true,
+    "expect": true,
+    "toJson": true,
+    "shallow": true,
+    "createShallow": true,
+  }
+}

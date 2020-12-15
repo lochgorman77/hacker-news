@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<IntlProvider /> renders correctly 1`] = `
+<IntlProvider
+  defaultFormats={Object {}}
+  defaultLocale="en"
+  formats={Object {}}
+  key="en"
+  locale="en"
+  messages={
+    Object {
+      "detail.view.by": "by",
+      "detail.view.comments": "comment",
+      "detail.view.link": "View Article",
+      "menu.link.home": "Hacker News",
+      "menu.link.login": "Login",
+      "menu.link.new": "New",
+      "menu.link.top": "Top",
+    }
+  }
+  onError={[Function]}
+  textComponent={Symbol(react.fragment)}
+>
+  <div
+    key="1"
+  >
+    test
+  </div>
+</IntlProvider>
+`;

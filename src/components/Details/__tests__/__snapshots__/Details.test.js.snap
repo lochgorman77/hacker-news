@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Detail /> renders correctly 1`] = `
+<MuiGrid
+  container={true}
+  item={true}
+  spacing={3}
+>
+  <MuiGrid
+    item={true}
+    key="0"
+    xs={6}
+  >
+    <Details
+      detail={
+        Object {
+          "by": "nojito",
+          "descendants": 35,
+          "id": 25428769,
+          "kids": Array [
+            25429182,
+            25429065,
+            25429334,
+            25429105,
+            25429145,
+            25429074,
+            25429035,
+            25429242,
+            25429234,
+            25429067,
+          ],
+          "score": 143,
+          "time": 1608027030,
+          "title": "Apple’s Anti-Tracking Plans for iPhone",
+          "type": "story",
+          "url": "https://foundation.mozilla.org/en/campaigns/apples-anti-tracking-plans-iphone/",
+        }
+      }
+    />
+  </MuiGrid>
+</MuiGrid>
+`;

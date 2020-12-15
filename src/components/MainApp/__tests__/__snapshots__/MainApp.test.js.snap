@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MainApp /> renders correctly 1`] = `
+<section
+  className="MainApp-root"
+  id="page-container"
+>
+  <HeaderMenu />
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.memo),
+        "WrappedComponent": [Function],
+        "compare": null,
+        "type": [Function],
+      }
+    }
+    path="/topstories"
+  />
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.memo),
+        "WrappedComponent": [Function],
+        "compare": null,
+        "type": [Function],
+      }
+    }
+    path="/newstories"
+  />
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.memo),
+        "WrappedComponent": [Function],
+        "compare": null,
+        "type": [Function],
+      }
+    }
+    path="/"
+  />
+</section>
+`;

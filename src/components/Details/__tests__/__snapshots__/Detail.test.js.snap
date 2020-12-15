@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Detail /> renders correctly 1`] = `
+<MuiCard
+  className="Details-root"
+  raised={true}
+>
+  <MuiCardHeader
+    title="Apple’s Anti-Tracking Plans for iPhone"
+  />
+  <MuiCardContent>
+    <MuiTypography
+      color="textSecondary"
+      variant="caption"
+    >
+      143
+       
+      <FormattedMessage
+        id="detail.view.by"
+      />
+       
+      nojito
+       
+      6 hours ago
+    </MuiTypography>
+  </MuiCardContent>
+  <MuiCardActions
+    disableSpacing={true}
+  >
+    <MuiButton
+      size="small"
+    >
+      <MuiLink
+        color="secondary"
+        href="https://foundation.mozilla.org/en/campaigns/apples-anti-tracking-plans-iphone/"
+        rel="noopener"
+        target="_blank"
+      >
+        <FormattedMessage
+          id="detail.view.link"
+        />
+      </MuiLink>
+    </MuiButton>
+    <MuiButton
+      className="Details-comment"
+      size="small"
+    >
+      35
+       
+      <FormattedMessage
+        id="detail.view.comments"
+      />
+    </MuiButton>
+  </MuiCardActions>
+</MuiCard>
+`;

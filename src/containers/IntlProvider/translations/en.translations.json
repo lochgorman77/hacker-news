@@ -1,0 +1,9 @@
+{
+  "menu.link.home": "Hacker News",
+  "menu.link.top": "Top",
+  "menu.link.new": "New",
+  "menu.link.login": "Login",
+  "detail.view.link": "View Article",
+  "detail.view.by": "by",
+  "detail.view.comments": "comment"
+}

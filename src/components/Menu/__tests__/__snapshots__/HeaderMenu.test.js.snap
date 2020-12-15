@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Detail /> renders correctly 1`] = `
+<div
+  className="undefined-root"
+>
+  <MuiAppBar
+    position="static"
+  >
+    <MuiToolbar>
+      <MuiButton>
+        <MuiLink
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "propTypes": Object {
+                "innerRef": [Function],
+                "onClick": [Function],
+                "replace": [Function],
+                "target": [Function],
+                "to": [Function],
+              },
+              "render": [Function],
+            }
+          }
+          to="/"
+        >
+          <FormattedMessage
+            id="menu.link.home"
+          />
+        </MuiLink>
+      </MuiButton>
+      <MuiButton
+        color="secondary"
+      >
+        <MuiLink
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "propTypes": Object {
+                "innerRef": [Function],
+                "onClick": [Function],
+                "replace": [Function],
+                "target": [Function],
+                "to": [Function],
+              },
+              "render": [Function],
+            }
+          }
+          to="/topstories"
+        >
+          <FormattedMessage
+            id="menu.link.top"
+          />
+        </MuiLink>
+      </MuiButton>
+      <MuiButton>
+        <MuiLink
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "propTypes": Object {
+                "innerRef": [Function],
+                "onClick": [Function],
+                "replace": [Function],
+                "target": [Function],
+                "to": [Function],
+              },
+              "render": [Function],
+            }
+          }
+          to="/newstories"
+        >
+          <FormattedMessage
+            id="menu.link.new"
+          />
+        </MuiLink>
+      </MuiButton>
+      <div
+        className="undefined-grow"
+      />
+      <MuiButton
+        color="inherit"
+      >
+        <FormattedMessage
+          id="menu.link.login"
+        />
+      </MuiButton>
+    </MuiToolbar>
+  </MuiAppBar>
+</div>
+`;
