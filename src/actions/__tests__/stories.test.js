@@ -12,36 +12,20 @@ const mockStore = configureMockStore(middlewares);
 const store = mockStore({});
 
 describe('Stories Actions', () => {
-  it('should create an action fetchNewStoriesSuccess', () => {
+  it('should create an action fetchStoriesSuccess', () => {
     const expectedAction = {
-      type: storiesActions.FETCH_NEW_STORIES_SUCCESS,
+      type: storiesActions.FETCH_STORIES_SUCCESS,
       payload: stories,
     };
-    expect(actions.fetchNewStoriesSuccess(stories)).toEqual(expectedAction);
+    expect(actions.fetchStoriesSuccess(stories)).toEqual(expectedAction);
   });
 
-  it('should create an action fetchNewStoriesError', () => {
+  it('should create an action fetchStoriesError', () => {
     const expectedAction = {
-      type: storiesActions.FETCH_NEW_STORIES_ERROR,
+      type: storiesActions.FETCH_STORIES_ERROR,
       payload: `Network Error`,
     };
-    expect(actions.fetchNewStoriesError(`Network Error`)).toEqual(expectedAction);
-  });
-
-  it('should create an action fetchTopStoriesSuccess', () => {
-    const expectedAction = {
-      type: storiesActions.FETCH_TOP_STORIES_SUCCESS,
-      payload: stories,
-    };
-    expect(actions.fetchTopStoriesSuccess(stories)).toEqual(expectedAction);
-  });
-
-  it('should create an action fetchTopStoriesError', () => {
-    const expectedAction = {
-      type: storiesActions.FETCH_TOP_STORIES_ERROR,
-      payload: `Network Error`,
-    };
-    expect(actions.fetchTopStoriesError(`Network Error`)).toEqual(expectedAction);
+    expect(actions.fetchStoriesError(`Network Error`)).toEqual(expectedAction);
   });
 
   describe('async actions', () => {
@@ -56,7 +40,7 @@ describe('Stories Actions', () => {
       store.clearActions();
     });
 
-    it('mocks a network error to test FETCH_TOP_STORIES_ERROR', () => {
+    it('mocks a network error to test FETCH_STORIES_ERROR', () => {
       axiosMock.onGet(`/topstories.json`).networkError(function () {
         return new Promise(function (resolve, reject) {
           reject(new Error([404, { payload: 'Network Error' }]));
@@ -72,7 +56,7 @@ describe('Stories Actions', () => {
       });
     });
 
-    it('creates FETCH_TOP_STORIES when calling fetchTopStories has finished', () => {
+    it('creates FETCH_STORIES when calling fetchStories has finished', () => {
       axiosMock.onGet(`/topstories.json`).reply(function () {
         return new Promise(function (resolve, reject) {
           resolve([200, stories]);
@@ -82,13 +66,13 @@ describe('Stories Actions', () => {
 
       const expectedActions = [
         {
-          type: storiesActions.FETCH_TOP_STORIES,
+          type: storiesActions.FETCH_STORIES,
         },
         {
           type: detailsActions.RESET,
         },
         {
-          type: storiesActions.FETCH_TOP_STORIES_SUCCESS,
+          type: storiesActions.FETCH_STORIES_SUCCESS,
           payload: stories,
         },
       ];
@@ -115,7 +99,7 @@ describe('Stories Actions', () => {
       return store.dispatch(actions.fetchNewStories()).then(() => {
         const actions = store.getActions();
         expect(actions[1].type).toEqual(detailsActions.RESET);
-        expect(actions[2].type).toEqual(storiesActions.FETCH_NEW_STORIES_ERROR);
+        expect(actions[2].type).toEqual(storiesActions.FETCH_STORIES_ERROR);
         expect(actions[2].payload.message).toEqual('Network Error');
       });
     });
@@ -130,13 +114,13 @@ describe('Stories Actions', () => {
 
       const expectedActions = [
         {
-          type: storiesActions.FETCH_NEW_STORIES,
+          type: storiesActions.FETCH_STORIES,
         },
         {
           type: detailsActions.RESET,
         },
         {
-          type: storiesActions.FETCH_NEW_STORIES_SUCCESS,
+          type: storiesActions.FETCH_STORIES_SUCCESS,
           payload: stories,
         },
       ];

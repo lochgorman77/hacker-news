@@ -1,38 +1,37 @@
 import { storiesActions, pageSize } from 'constants/ActionTypes';
 
 const initialState = {
-  top: [],
-  new: [],
+  list: [],
+  currentPage: 1,
 };
 
 export default function roles(state = initialState, action) {
   switch (action.type) {
-    case storiesActions.FETCH_TOP_STORIES_SUCCESS:
+    case storiesActions.FETCH_STORIES_SUCCESS:
       return {
         ...state,
-        top: action.payload,
+        list: action.payload,
       };
-    case storiesActions.FETCH_TOP_STORIES_ERROR:
+    case storiesActions.FETCH_STORIES:
+    case storiesActions.FETCH_STORIES_ERROR:
       return {
         ...state,
-        top: initialState.top,
+        list: initialState.list,
       };
-    case storiesActions.FETCH_NEW_STORIES_SUCCESS:
+    case storiesActions.UPDATE_STORIES_PAGE:
       return {
         ...state,
-        new: action.payload,
-      };
-    case storiesActions.FETCH_NEW_STORIES_ERROR:
-      return {
-        ...state,
-        new: initialState.new,
+        currentPage: action.payload,
       };
     default:
       return state;
   }
 }
-export const getTopStories = (state) => state.stories.top;
-export const getNewStories = (state) => state.stories.new;
+export const getStories = (state) => {
+  const offset = (state.stories.currentPage - 1) * pageSize;
+  return state.stories.list.slice(offset).slice(0, pageSize);
+};
+export const getCurrentPage = (state) => state.stories.currentPage;
 export const getPageCount = (state) => {
-  return 500 / pageSize;
+  return Math.ceil(state.stories.list.length / pageSize);
 };

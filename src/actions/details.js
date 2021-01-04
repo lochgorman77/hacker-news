@@ -26,3 +26,8 @@ export function fetchDetails(detailId) {
       });
   };
 }
+export function resetDetails() {
+  return {
+    type: detailsActions.RESET,
+  };
+}

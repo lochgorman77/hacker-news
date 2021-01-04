@@ -1,56 +1,52 @@
 import { HackerNewsApi } from 'api/config';
-import { storiesActions, detailsActions } from './../constants/ActionTypes';
+import { storiesActions, detailsActions } from 'constants/ActionTypes';
 
-export function fetchTopStoriesSuccess(stories) {
+export function fetchStoriesSuccess(stories) {
   return {
-    type: storiesActions.FETCH_TOP_STORIES_SUCCESS,
+    type: storiesActions.FETCH_STORIES_SUCCESS,
     payload: stories,
   };
 }
-export function fetchTopStoriesError(error) {
+export function fetchStoriesError(error) {
   return {
-    type: storiesActions.FETCH_TOP_STORIES_ERROR,
+    type: storiesActions.FETCH_STORIES_ERROR,
     payload: error,
   };
 }
 export function fetchTopStories() {
   return function (dispatch) {
-    dispatch({ type: storiesActions.FETCH_TOP_STORIES });
+    dispatch({ type: storiesActions.FETCH_STORIES });
     dispatch({ type: detailsActions.RESET });
 
     return HackerNewsApi.get(`/topstories.json`)
       .then((result) => {
-        dispatch(fetchTopStoriesSuccess(result.data));
+        dispatch(updateStoriesPage(1));
+        dispatch(fetchStoriesSuccess(result.data));
       })
       .catch((error) => {
-        dispatch(fetchTopStoriesError(error));
+        dispatch(fetchStoriesError(error));
       });
   };
 }
 
-export function fetchNewStoriesSuccess(stories) {
-  return {
-    type: storiesActions.FETCH_NEW_STORIES_SUCCESS,
-    payload: stories,
-  };
-}
-export function fetchNewStoriesError(error) {
-  return {
-    type: storiesActions.FETCH_NEW_STORIES_ERROR,
-    payload: error,
-  };
-}
 export function fetchNewStories() {
   return function (dispatch) {
-    dispatch({ type: storiesActions.FETCH_NEW_STORIES });
+    dispatch({ type: storiesActions.FETCH_STORIES });
     dispatch({ type: detailsActions.RESET });
 
     return HackerNewsApi.get(`/newstories.json`)
       .then((result) => {
-        dispatch(fetchNewStoriesSuccess(result.data));
+        dispatch(updateStoriesPage(1));
+        dispatch(fetchStoriesSuccess(result.data));
       })
       .catch((error) => {
-        dispatch(fetchNewStoriesError(error));
+        dispatch(fetchStoriesError(error));
       });
+  };
+}
+export function updateStoriesPage(page) {
+  return {
+    type: storiesActions.UPDATE_STORIES_PAGE,
+    payload: page,
   };
 }

@@ -4,10 +4,9 @@ import PropTypes from 'prop-types';
 import Details from 'components/Details/Details';
 
 import { fetchTopStories } from 'actions/stories';
-import { getTopStories } from 'reducers/stories';
+import { getStories } from 'reducers/stories';
 import { fetchDetails } from 'actions/details';
 import { getDetails } from 'reducers/details';
-import { pageSize } from 'constants/ActionTypes';
 
 export class TopStoriesContainer extends Component {
   componentDidMount() {
@@ -15,9 +14,9 @@ export class TopStoriesContainer extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.stories !== prevProps.stories) {
-      for (let i = 0; i < pageSize; i++) {
-        this.props.handleFetchDetails(this.props.stories[i]);
+    if (this.props.stories[0] !== prevProps.stories[0]) {
+      for (const story of this.props.stories) {
+        this.props.handleFetchDetails(story);
       }
     }
   }
@@ -35,7 +34,7 @@ TopStoriesContainer.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  stories: getTopStories(state),
+  stories: getStories(state),
   details: getDetails(state),
 });
 

@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import TopStoriesContainer from 'components/TopStories/TopStoriesContainer';
 import NewStoriesContainer from 'components/NewStories/NewStoriesContainer';
 import HeaderMenu from 'components/Menu/HeaderMenu';
+import PaginationApp from 'components/Pagination/PaginationApp';
 
 const styles = (theme) => ({
   root: {
@@ -19,10 +20,18 @@ export class MainApp extends Component {
     return (
       <section id="page-container" className={this.props.classes.root}>
         <HeaderMenu />
-
-        <Route path="/topstories" component={TopStoriesContainer} />
-        <Route path="/newstories" component={NewStoriesContainer} />
-        <Route path="/" component={TopStoriesContainer} />
+        <PaginationApp />
+        <Switch>
+          <Route path="/topstories">
+            <TopStoriesContainer />
+          </Route>
+          <Route path="/newstories">
+            <NewStoriesContainer />
+          </Route>
+          <Route path="/">
+            <TopStoriesContainer />
+          </Route>
+        </Switch>
       </section>
     );
   }
