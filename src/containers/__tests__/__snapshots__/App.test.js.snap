@@ -317,15 +317,9 @@ exports[`<App /> renders correctly 1`] = `
         }
       }
     >
-      <Switch>
-        <Route
-          component={[Function]}
-          path="/app"
-        />
-        <Route
-          component={[Function]}
-        />
-      </Switch>
+      <Route>
+        <MainApp />
+      </Route>
     </IntlProvider>
   </ThemeProvider>
 </Provider>

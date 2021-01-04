@@ -1,6 +1,6 @@
 import React from 'react';
 import { TopStoriesContainer } from '../TopStoriesContainer';
-import stories from 'utils/test-data/stories-new.json';
+import testStories from 'utils/test-data/stories.json';
 
 const props = {
   handleFetchTopStories: jest.fn(),
@@ -24,7 +24,7 @@ describe('<TopStoriesContainer />', () => {
   });
 
   it('component updated ', () => {
-    wrapper.setProps({ stories: stories });
+    wrapper.setProps({ stories: testStories.slice(0, 8) });
     expect(wrapper.instance().props.handleFetchDetails).toBeCalled();
   });
 });

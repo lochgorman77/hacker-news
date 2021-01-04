@@ -30,6 +30,13 @@ describe('Details Actions', () => {
     expect(actions.fetchDetailsError(`Network Error`)).toEqual(expectedAction);
   });
 
+  it('should create an action resetDetails', () => {
+    const expectedAction = {
+      type: detailsActions.RESET,
+    };
+    expect(actions.resetDetails()).toEqual(expectedAction);
+  });
+
   describe('async actions', () => {
     let axiosMock;
 

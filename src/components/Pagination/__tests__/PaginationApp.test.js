@@ -2,8 +2,10 @@ import React from 'react';
 import { PaginationAppStyle } from '../PaginationApp';
 
 const props = {
-  handleFetchTopStories: jest.fn(),
-  stories: [],
+  count: 60,
+  currentPage: 1,
+  handleUpdateStoriesPage: jest.fn(),
+  handleResetDetails: jest.fn(),
 };
 
 describe('<TopStoriesContainer />', () => {
@@ -20,8 +22,11 @@ describe('<TopStoriesContainer />', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  // it('component updated ', () => {
-  //   wrapper.setProps({ stories: stories });
-  //   expect(wrapper.instance().props.handleFetchDetails).toBeCalled();
-  // });
+  it('should call handleChange ', () => {
+    const spy = jest.spyOn(wrapper.instance(), 'handleChange');
+    wrapper.instance().handleChange({}, 2);
+    expect(spy).toHaveBeenCalled();
+    expect(props.handleUpdateStoriesPage.mock.calls.length).toBe(1);
+    expect(props.handleResetDetails.mock.calls.length).toBe(1);
+  });
 });

@@ -6,38 +6,23 @@ exports[`<MainApp /> renders correctly 1`] = `
   id="page-container"
 >
   <HeaderMenu />
-  <Route
-    component={
-      Object {
-        "$$typeof": Symbol(react.memo),
-        "WrappedComponent": [Function],
-        "compare": null,
-        "type": [Function],
-      }
-    }
-    path="/topstories"
-  />
-  <Route
-    component={
-      Object {
-        "$$typeof": Symbol(react.memo),
-        "WrappedComponent": [Function],
-        "compare": null,
-        "type": [Function],
-      }
-    }
-    path="/newstories"
-  />
-  <Route
-    component={
-      Object {
-        "$$typeof": Symbol(react.memo),
-        "WrappedComponent": [Function],
-        "compare": null,
-        "type": [Function],
-      }
-    }
-    path="/"
-  />
+  <Connect(PaginationApp) />
+  <Switch>
+    <Route
+      path="/topstories"
+    >
+      <Connect(TopStoriesContainer) />
+    </Route>
+    <Route
+      path="/newstories"
+    >
+      <Connect(NewStoriesContainer) />
+    </Route>
+    <Route
+      path="/"
+    >
+      <Connect(TopStoriesContainer) />
+    </Route>
+  </Switch>
 </section>
 `;

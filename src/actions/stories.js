@@ -44,6 +44,7 @@ export function fetchNewStories() {
       });
   };
 }
+
 export function updateStoriesPage(page) {
   return {
     type: storiesActions.UPDATE_STORIES_PAGE,

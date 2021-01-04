@@ -1,10 +1,10 @@
 import * as reducer from '../stories';
-import { storiesActions } from 'constants/ActionTypes';
-import stories from 'utils/test-data/stories-new.json';
+import { storiesActions, pageSize } from 'constants/ActionTypes';
+import testStories from 'utils/test-data/stories.json';
 
 const initialSettings = {
-  top: [],
-  new: [],
+  currentPage: 1,
+  list: [],
 };
 
 describe('Stories reducer', () => {
@@ -12,69 +12,74 @@ describe('Stories reducer', () => {
     expect(reducer.default(undefined, {})).toEqual(initialSettings);
   });
 
-  it('should handle FETCH_TOP_STORIES_SUCCESS', () => {
+  it('should handle FETCH_STORIES_SUCCESS', () => {
     expect(
       reducer.default(
-        { top: [] },
+        { list: [] },
         {
-          type: storiesActions.FETCH_TOP_STORIES_SUCCESS,
-          payload: stories,
+          type: storiesActions.FETCH_STORIES_SUCCESS,
+          payload: testStories,
         }
       )
     ).toEqual({
-      top: stories,
+      list: testStories,
     });
   });
 
-  it('should handle FETCH_TOP_STORIES_ERROR', () => {
+  it('should handle FETCH_STORIES_ERROR', () => {
     expect(
       reducer.default(
-        { top: [] },
+        { list: testStories },
         {
-          type: storiesActions.FETCH_TOP_STORIES_ERROR,
+          type: storiesActions.FETCH_STORIES_ERROR,
           payload: { error: 'error' },
         }
       )
-    ).toEqual({ top: [] });
+    ).toEqual({ list: [] });
   });
 
-  it('should handle FETCH_NEW_STORIES_SUCCESS', () => {
+  it('should handle FETCH_STORIES', () => {
     expect(
       reducer.default(
-        { new: [] },
+        { list: testStories },
         {
-          type: storiesActions.FETCH_NEW_STORIES_SUCCESS,
-          payload: stories,
+          type: storiesActions.FETCH_STORIES,
         }
       )
-    ).toEqual({
-      new: stories,
-    });
+    ).toEqual({ list: [] });
   });
 
-  it('should handle FETCH_NEW_STORIES_ERROR', () => {
+  it('should handle UPDATE_STORIES_PAGE', () => {
     expect(
       reducer.default(
-        { new: [] },
+        { list: testStories },
         {
-          type: storiesActions.FETCH_NEW_STORIES_ERROR,
-          payload: { error: 'error' },
+          type: storiesActions.UPDATE_STORIES_PAGE,
+          payload: 2,
         }
       )
-    ).toEqual({ new: [] });
+    ).toEqual({ list: testStories, currentPage: 2 });
   });
 
-  it('should handle getTopStories', () => {
-    const appReducer = reducer.default({ top: stories }, {});
+  it('should handle getStories', () => {
+    const appReducer = reducer.default({ list: testStories, currentPage: 1 }, {});
     const state = { stories: appReducer };
-    const topStories = reducer.getTopStories(state);
-    expect(topStories).toEqual(stories);
+    const stories = reducer.getStories(state);
+    expect(stories.length).toEqual(pageSize);
   });
 
-  it('should handle getNewStories', () => {
-    const appReducer = reducer.default({ new: stories }, {});
+  it('should handle getCurrentPage', () => {
+    const appReducer = reducer.default({ list: testStories, currentPage: 1 }, {});
     const state = { stories: appReducer };
-    const newStories = reducer.getNewStories(state);
-    expect(newStories).toEqual(stories);
+    const currentPage = reducer.getCurrentPage(state);
+    expect(currentPage).toEqual(1);
+  });
+
+  it('should handle getPageCount', () => {
+    const appReducer = reducer.default({ list: testStories, currentPage: 1 }, {});
+    const state = { stories: appReducer };
+    const pageCount = reducer.getPageCount(state);
+    // 63 calculated from test stories length (500/8 and rounded up)
+    expect(pageCount).toEqual(63);
   });
 });

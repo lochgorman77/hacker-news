@@ -15,6 +15,12 @@ describe('<Detail />', () => {
   it('renders correctly', () => {
     expect(wrapper.length).toBe(1);
     expect(wrapper.name()).toBe('MuiGrid');
+    expect(wrapper.find('MuiGrid')).toHaveLength(2);
     expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('component updated ', () => {
+    wrapper.setProps({ details: [{}] });
+    expect(wrapper.find('MuiGrid')).toHaveLength(1);
   });
 });

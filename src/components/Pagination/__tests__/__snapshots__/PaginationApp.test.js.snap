@@ -5,6 +5,10 @@ exports[`<TopStoriesContainer /> renders correctly 1`] = `
   className="PaginationApp-pagination"
   id="page"
 >
-  <MuiPagination />
+  <MuiPagination
+    count={60}
+    onChange={[Function]}
+    page={1}
+  />
 </div>
 `;

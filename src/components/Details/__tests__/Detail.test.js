@@ -17,4 +17,11 @@ describe('<Detail />', () => {
     expect(wrapper.name()).toBe('MuiCard');
     expect(toJson(wrapper)).toMatchSnapshot();
   });
+
+  it('should call timeAgo and return now', () => {
+    const spy = jest.spyOn(wrapper.instance(), 'timeAgo');
+    const timeago = wrapper.instance().timeAgo(Date.now() / 1000);
+    expect(spy).toHaveBeenCalled();
+    expect(timeago).toBe('now');
+  });
 });

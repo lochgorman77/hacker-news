@@ -17,7 +17,7 @@ export class Details extends Component {
     return (
       <Grid item container spacing={3}>
         {details.map((detail, index) => {
-          if (detail !== null) {
+          if (Object.keys(detail).length !== 0 && detail.constructor === Object) {
             return (
               <Grid key={index} className={classes.card} item xs={6}>
                 <Detail detail={detail} />
